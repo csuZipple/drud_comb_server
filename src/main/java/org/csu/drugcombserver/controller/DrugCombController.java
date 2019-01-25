@@ -1,8 +1,8 @@
 package org.csu.drugcombserver.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.csu.drugcombserver.entity.Code;
 import org.csu.drugcombserver.entity.Msg;
-import org.csu.drugcombserver.mapper.DrugCombMapper;
 import org.csu.drugcombserver.service.DrugCombService;
 import org.csu.drugcombserver.util.Constant;
 import org.csu.drugcombserver.util.Result;
@@ -33,5 +33,10 @@ public class DrugCombController {
                 return Result.error(Code.SERVER_ERROR,"Server error.");
             }
         }
+    }
+
+    @RequestMapping("/origin/{tableIndex}/page")
+    public Msg page(@PathVariable("tableIndex") String tableIndex, @Param("page") String pageString, @Param("size") String sizeString){
+       return Result.error(Code.SERVER_ERROR,"Do nothing.");
     }
 }

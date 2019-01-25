@@ -15,4 +15,14 @@ public interface DrugCombMapper {
             @Result(property = "drugColName", column = "DrugCol")
     })
     List<DrugCombInfo> getTop10ByTableId(@Param("table") String tableName);
+
+    @Select("SELECT * FROM ${table} LIMIT #{page},#{size}")
+    @Results({
+            @Result(property = "drugRowName",  column = "DrugRow"),
+            @Result(property = "drugColName", column = "DrugCol")
+    })
+    List<DrugCombInfo> page(@Param("table") String tableName, @Param("page") int page, @Param("size") int size);
+
+    @Select("SELECT count(*) FROM ${table}")
+    Integer getTableSizeCount (@Param("table") String tableName);
 }

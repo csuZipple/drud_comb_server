@@ -8,10 +8,19 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 @Component
 public class DrugCombService {
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private DrugCombMapper drugCombMapper;
 
     public List<DrugCombInfo> getTop10 (String tableName) {
         return drugCombMapper.getTop10ByTableId(tableName);
+    }
+
+    public List<DrugCombInfo> page (String tableName, int page, int size) {
+        return drugCombMapper.page(tableName, page, size);
+    }
+
+    public Integer count (String tableName){
+        return drugCombMapper.getTableSizeCount(tableName);
     }
 }
