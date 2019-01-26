@@ -20,7 +20,6 @@ public class ParamsValidateException {
     @ExceptionHandler(Exception.class)
     public Msg handler(Exception ex) {
 
-        ex.printStackTrace();
         StringBuilder errMsg =  new StringBuilder();
         if(ex instanceof ConstraintViolationException){
             ConstraintViolationException e = (ConstraintViolationException) ex;
@@ -37,6 +36,7 @@ public class ParamsValidateException {
             }
             return Result.error(Code.BAD_REQUEST,errMsg.toString());
         }
+        ex.printStackTrace();
         return Result.error(Code.SERVER_ERROR,"Illegal params");
     }
 }
