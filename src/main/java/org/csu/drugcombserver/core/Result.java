@@ -1,6 +1,4 @@
-package org.csu.drugcombserver.util;
-
-import org.csu.drugcombserver.entity.Msg;
+package org.csu.drugcombserver.core;
 
 public class Result {
     public static Msg success(Object object){

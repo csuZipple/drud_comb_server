@@ -1,11 +1,12 @@
 package org.csu.drugcombserver.controller;
 
 import org.apache.ibatis.annotations.Param;
+import org.csu.drugcombserver.core.BaseController;
 import org.csu.drugcombserver.entity.Code;
-import org.csu.drugcombserver.entity.Msg;
+import org.csu.drugcombserver.core.Msg;
 import org.csu.drugcombserver.service.DrugCombService;
 import org.csu.drugcombserver.util.Constant;
-import org.csu.drugcombserver.util.Result;
+import org.csu.drugcombserver.core.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/convert")
-public class DrugCombController {
+public class DrugCombController extends BaseController {
     @Autowired
     private DrugCombService service;
     @RequestMapping("/origin/{tableIndex}")
@@ -22,15 +23,15 @@ public class DrugCombController {
         try{
             index = Integer.parseInt(tableIndex);
         }catch (Exception e){
-            return Result.error(Code.BAD_REQUEST,"Only accept integers.");
+            return badRequest("Only accept integers.");
         }
         if(index > Constant.TABLELIST.length || index <= 0){
-            return Result.error(Code.NOT_FOUND,"Data not found");
+            return notFound();
         }else{
             try{
-                return Result.success(service.getTop10(Constant.TABLELIST[--index]));
+                return success(service.getTop10(Constant.TABLELIST[--index]));
             }catch (Exception e){
-                return Result.error(Code.SERVER_ERROR,"Server error.");
+                return error();
             }
         }
     }

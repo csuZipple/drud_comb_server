@@ -1,4 +1,6 @@
-package org.csu.drugcombserver.entity;
+package org.csu.drugcombserver.core;
+
+import org.csu.drugcombserver.entity.Code;
 
 public class Msg<T> {
     private Integer code;
