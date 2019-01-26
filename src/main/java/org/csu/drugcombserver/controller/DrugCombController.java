@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @RestController
 @Validated
@@ -25,16 +26,21 @@ public class DrugCombController extends BaseController {
     @RequestMapping("/origin/{tableIndex}")
     public Msg getAll(@PathVariable("tableIndex")
                       @Max(value = 4,message = "Maximum is 4")
-                      @Min(value = 1,message = "Minimum is 1") int tableIndex){
+                      @Min(value = 1,message = "Minimum is 1") Integer tableIndex){
         return success(service.getTop10(Constant.TABLELIST[--tableIndex]));
     }
 
     @RequestMapping("/origin/{tableIndex}/page")
     public Msg page(@PathVariable("tableIndex")
+                    @NotNull
                     @Max(value = 4,message = "Maximum is 4")
-                    @Min(value = 1,message = "Minimum is 1") int tableIndex,
-                    @Param("page") String pageString,
-                    @Param("size") String sizeString){
-       return Result.error(Code.SERVER_ERROR,"Do nothing.");
+                    @Min(value = 1,message = "Minimum is 1") Integer tableIndex,
+                    @Param("page")
+                    @NotNull(message = "Parameter page must not be null")
+                    @Min(value = 1,message = "The minimum page is 1")Integer page,
+                    @Param("size")
+                    @NotNull(message = "Parameter size must not be null")
+                    @Min(value = 2,message = "The minimum size is 2")Integer size){
+       return success(service.page(Constant.TABLELIST[--tableIndex],page,size));
     }
 }
