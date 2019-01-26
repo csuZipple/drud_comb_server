@@ -27,7 +27,7 @@ public class DrugCombController extends BaseController {
     public Msg getAll(@PathVariable("tableIndex")
                       @Max(value = 4,message = "Maximum is 4")
                       @Min(value = 1,message = "Minimum is 1") Integer tableIndex){
-        return success(service.getTop10(Constant.TABLELIST[--tableIndex]));
+        return success(Constant.TABLELIST[--tableIndex]);
     }
 
     @RequestMapping("/origin/{tableIndex}/page")
