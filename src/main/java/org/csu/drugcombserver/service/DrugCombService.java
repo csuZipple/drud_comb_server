@@ -1,6 +1,7 @@
 package org.csu.drugcombserver.service;
 
 import org.csu.drugcombserver.entity.DrugCombInfo;
+import org.csu.drugcombserver.entity.DrugCombinationInfo;
 import org.csu.drugcombserver.mapper.DrugCombMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,5 +36,9 @@ public class DrugCombService {
 
     public List<DrugCombInfo> getDrugMapKV (String tableName, int blockId){
         return drugCombMapper.drugKV(tableName, blockId);
+    }
+
+    public DrugCombinationInfo getDrugCombination(String tableName, int pairIndex){
+        return drugCombMapper.getDrugCombinationInfoByPairIndex(tableName, pairIndex);
     }
 }

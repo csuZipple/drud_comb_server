@@ -3,6 +3,8 @@ package org.csu.drugcombserver.controller;
 import org.apache.ibatis.annotations.Param;
 import org.csu.drugcombserver.core.BaseController;
 import org.csu.drugcombserver.core.Msg;
+import org.csu.drugcombserver.entity.DrugCombInfo;
+import org.csu.drugcombserver.entity.DrugCombinationInfo;
 import org.csu.drugcombserver.service.DrugCombService;
 import org.csu.drugcombserver.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @RestController
 @Validated
@@ -62,6 +65,26 @@ public class DrugCombController extends BaseController {
                       @Min(value = 1,message = "Minimum is 1") Integer tableIndex,
                       @PathVariable("blockId")
                       @Min(value = 1,message = "Minimum is 1") Integer blockId){
-        return success(service.getDrugMapKV(Constant.TABLELIST[--tableIndex], blockId));
+        List<DrugCombInfo> drugCombInfoList = service.getDrugMapKV(Constant.TABLELIST[--tableIndex], blockId);
+        if(drugCombInfoList.size()>0){
+            return success(drugCombInfoList);
+        }else{
+           return notFound();
+        }
+    }
+
+    @RequestMapping("/origin/{tableIndex}/drugCombination/{pairIndex}")
+    public Msg drugCombination(@PathVariable("tableIndex")
+                      @NotNull
+                      @Max(value = 4,message = "Maximum is 4")
+                      @Min(value = 1,message = "Minimum is 1") Integer tableIndex,
+                      @PathVariable("pairIndex")
+                      @Min(value = 1,message = "Minimum is 1") Integer pairIndex){
+        DrugCombinationInfo drugCombinationInfo = service.getDrugCombination(Constant.INTEGRATION_TABLELIST[--tableIndex], pairIndex);
+        if(drugCombinationInfo != null){
+            return success(drugCombinationInfo);
+        }else{
+            return notFound();
+        }
     }
 }

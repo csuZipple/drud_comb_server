@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.csu.drugcombserver.VO.DrugKV;
 import org.csu.drugcombserver.entity.DrugCombInfo;
+import org.csu.drugcombserver.entity.DrugCombinationInfo;
 
 import java.util.List;
 
@@ -54,4 +55,12 @@ public interface DrugCombMapper {
             @Result(property = "drugColName", column = "DrugCol")
     })
     List<DrugCombInfo> drugKV(@Param("table") String tableName, @Param("blockId") int blockId);
+
+    @Select("SELECT * FROM ${table} WHERE PairIndex = #{pairIndex}")
+    @Results({
+            @Result(property = "drugCombination",  column = "Drug.combination"),
+            @Result(property = "synergyScore", column = "Synergy.score"),
+            @Result(property = "mostSynergisticAreaScore", column = "Most.synergistic.area.score")
+    })
+    DrugCombinationInfo getDrugCombinationInfoByPairIndex(@Param("table") String tableName, @Param("pairIndex") int pairIndex);
 }
