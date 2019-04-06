@@ -1,10 +1,12 @@
 package org.csu.drugcombserver.service;
 
+import org.csu.drugcombserver.entity.DrugCombInfo;
 import org.csu.drugcombserver.mapper.DrugCombMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -29,5 +31,9 @@ public class DrugCombService {
         res.put("page",drugCombMapper.drugMapPage(tableName, (page - 1) * size, size));
         res.put("total",drugCombMapper.getDrugMapSizeCount(tableName)/size);
         return res;
+    }
+
+    public List<DrugCombInfo> getDrugMapKV (String tableName, int blockId){
+        return drugCombMapper.drugKV(tableName, blockId);
     }
 }

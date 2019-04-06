@@ -55,4 +55,13 @@ public class DrugCombController extends BaseController {
                            @Min(value = 2,message = "The minimum size is 2")Integer size){
         return success(service.getDrugMapPage(Constant.TABLELIST[--tableIndex],page,size));
     }
+    @RequestMapping("/origin/{tableIndex}/drugKV/{blockId}")
+    public Msg drugKV(@PathVariable("tableIndex")
+                      @NotNull
+                      @Max(value = 4,message = "Maximum is 4")
+                      @Min(value = 1,message = "Minimum is 1") Integer tableIndex,
+                      @PathVariable("blockId")
+                      @Min(value = 1,message = "Minimum is 1") Integer blockId){
+        return success(service.getDrugMapKV(Constant.TABLELIST[--tableIndex], blockId));
+    }
 }

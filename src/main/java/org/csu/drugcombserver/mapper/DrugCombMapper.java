@@ -42,4 +42,16 @@ public interface DrugCombMapper {
     @Select("SELECT max(BlockID) FROM ${table}")
     Integer getDrugMapSizeCount (@Param("table") String tableName);
 
+    /**
+     * 获取特定药物对中的所有信息
+     * @param tableName 表名
+     * @param blockId 特定药物对ID
+     * @return 返回药物信息列表
+     */
+    @Select("SELECT * FROM ${table} WHERE BlockID = #{blockId}")
+    @Results({
+            @Result(property = "drugRowName",  column = "DrugRow"),
+            @Result(property = "drugColName", column = "DrugCol")
+    })
+    List<DrugCombInfo> drugKV(@Param("table") String tableName, @Param("blockId") int blockId);
 }
