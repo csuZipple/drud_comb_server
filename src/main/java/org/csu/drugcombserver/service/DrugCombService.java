@@ -23,4 +23,11 @@ public class DrugCombService {
     public Integer count (String tableName){
         return drugCombMapper.getTableSizeCount(tableName);
     }
+
+    public Map getDrugMapPage (String tableName, int page, int size){
+        Map<String,Object> res = new HashMap<>();
+        res.put("page",drugCombMapper.drugMapPage(tableName, (page - 1) * size, size));
+        res.put("total",drugCombMapper.getDrugMapSizeCount(tableName)/size);
+        return res;
+    }
 }
