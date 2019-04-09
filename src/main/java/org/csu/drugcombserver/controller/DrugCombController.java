@@ -24,6 +24,12 @@ import java.util.List;
 public class DrugCombController extends BaseController {
     @Autowired
     private DrugCombService service;
+
+    @RequestMapping("/tables")
+    public Msg getTables(){
+        return success(Constant.TABLELIST);
+    }
+
     @RequestMapping("/origin/{tableIndex}")
     public Msg getAll(@PathVariable("tableIndex")
                       @Max(value = 4,message = "Maximum is 4")
