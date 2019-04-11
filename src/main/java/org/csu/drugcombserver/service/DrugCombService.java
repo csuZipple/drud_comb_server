@@ -19,7 +19,7 @@ public class DrugCombService {
     public Map page (String tableName, int page, int size) {
         Map<String,Object> res = new HashMap<>();
         res.put("page",drugCombMapper.page(tableName, (page - 1) * size, size));
-        res.put("total",drugCombMapper.getTableSizeCount(tableName)/size); //Todo : 总数可以考虑缓存起来
+        res.put("total",drugCombMapper.getTableSizeCount(tableName)); //Todo : 总数可以考虑缓存起来
         return res;
     }
 
@@ -30,7 +30,7 @@ public class DrugCombService {
     public Map getDrugMapPage (String tableName, int page, int size){
         Map<String,Object> res = new HashMap<>();
         res.put("page",drugCombMapper.drugMapPage(tableName, (page - 1) * size, size));
-        res.put("total",drugCombMapper.getTableSizeCount(tableName)/size);
+        res.put("total",drugCombMapper.getTableSizeCount(tableName));
         return res;
     }
 

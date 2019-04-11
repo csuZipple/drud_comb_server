@@ -4,7 +4,6 @@ package org.csu.drugcombserver.entity;
  * 组合药物对的原始信息 - 包含细胞系 计算方式 ZIP 得分等
  */
 public class DrugCombinationInfo {
-    private Integer id;
     private Integer pairIndex;
     private String drugCombination;
     private String drug1;
@@ -14,13 +13,6 @@ public class DrugCombinationInfo {
     private Double mostSynergisticAreaScore;
     private String method;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getPairIndex() {
         return pairIndex;
