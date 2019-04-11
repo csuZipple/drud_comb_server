@@ -21,4 +21,8 @@ public class DrugChemicalService {
         return mapper.getDrugInfoByDrugCIDs(id);
     }
 
+    public DrugInfo getDrugInfoByDrugName(String name){
+        return mapper.getDrugInfoByDrugName(name);
+    }
+
 }

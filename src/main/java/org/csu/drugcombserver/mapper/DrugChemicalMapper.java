@@ -14,4 +14,7 @@ public interface DrugChemicalMapper {
 
     @Select("SELECT * FROM drug_chemical_info WHERE cIds = #{cIds}")
     DrugInfo getDrugInfoByDrugCIDs (@Param("cIds") String cIds);
+
+    @Select("SELECT * FROM drug_chemical_info WHERE drugName = #{name}")
+    DrugInfo getDrugInfoByDrugName(@Param("name") String name);
 }

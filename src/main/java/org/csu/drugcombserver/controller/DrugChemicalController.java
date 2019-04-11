@@ -32,4 +32,12 @@ public class DrugChemicalController extends BaseController {
         }
         return success(drugInfo);
     }
+    @RequestMapping("/info/{drugName}")
+    public Msg getIndividualDrugInfoByDrugNames(@PathVariable("drugName") @NotNull(message = "Parameter drugName must not be null") String drugName){
+        DrugInfo drugInfo = service.getDrugInfoByDrugName(drugName);
+        if(drugInfo == null){
+            return notFound();
+        }
+        return success(drugInfo);
+    }
 }
