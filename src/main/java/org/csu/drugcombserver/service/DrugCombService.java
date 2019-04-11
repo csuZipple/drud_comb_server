@@ -30,7 +30,7 @@ public class DrugCombService {
     public Map getDrugMapPage (String tableName, int page, int size){
         Map<String,Object> res = new HashMap<>();
         res.put("page",drugCombMapper.drugMapPage(tableName, (page - 1) * size, size));
-        res.put("total",drugCombMapper.getDrugMapSizeCount(tableName)/size);
+        res.put("total",drugCombMapper.getTableSizeCount(tableName)/size);
         return res;
     }
 

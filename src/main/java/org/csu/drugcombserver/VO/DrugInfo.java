@@ -6,7 +6,7 @@ package org.csu.drugcombserver.VO;
 public class DrugInfo {
     private String cIds;
     private String drugName;
-    private String drugName2;
+    private String drugNameOfficial;
     private String img;
     private String originImgUrl;
     private String molecularWeight;
@@ -60,11 +60,11 @@ public class DrugInfo {
         this.smilesString = smilesString;
     }
 
-    public String getDrugName2() {
-        return drugName2;
+    public String getDrugNameOfficial() {
+        return drugNameOfficial;
     }
 
-    public void setDrugName2(String drugName2) {
-        this.drugName2 = drugName2;
+    public void setDrugNameOfficial(String drugNameOfficial) {
+        this.drugNameOfficial = drugNameOfficial;
     }
 }

@@ -28,20 +28,13 @@ public interface DrugCombMapper {
      * @param size 每页所含数据量
      * @return 返回药物对列表
      */
-    @Select("SELECT BlockID, DrugRow, DrugCol FROM ${table} GROUP BY BlockID ORDER BY BlockID LIMIT #{page},#{size}")
+    @Select("SELECT * FROM ${table} LIMIT #{page},#{size}")
     @Results({
-            @Result(property = "drugRowName",  column = "DrugRow"),
-            @Result(property = "drugColName", column = "DrugCol")
+            @Result(property = "drugCombination",  column = "Drug.combination"),
+            @Result(property = "synergyScore", column = "Synergy.score"),
+            @Result(property = "mostSynergisticAreaScore", column = "Most.synergistic.area.score")
     })
-    List<DrugKV> drugMapPage(@Param("table") String tableName,  @Param("page") int page, @Param("size") int size);
-
-    /**
-     * 查询表中药物对的数量
-     * @param tableName 表名
-     * @return 返回药物对的总数
-     */
-    @Select("SELECT max(BlockID) FROM ${table}")
-    Integer getDrugMapSizeCount (@Param("table") String tableName);
+    List<DrugCombinationInfo> drugMapPage(@Param("table") String tableName,  @Param("page") int page, @Param("size") int size);
 
     /**
      * 获取特定药物对中的所有信息

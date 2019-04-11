@@ -62,7 +62,7 @@ public class DrugCombController extends BaseController {
                            @Param("size")
                            @NotNull(message = "Parameter size must not be null")
                            @Min(value = 2,message = "The minimum size is 2")Integer size){
-        return success(service.getDrugMapPage(Constant.TABLELIST[--tableIndex],page,size));
+        return success(service.getDrugMapPage(Constant.INTEGRATION_TABLELIST[--tableIndex],page,size));
     }
     @RequestMapping("/origin/{tableIndex}/drugKV/{blockId}")
     public Msg drugKV(@PathVariable("tableIndex")
