@@ -3,6 +3,7 @@ package org.csu.drugcombserver.controller;
 import org.apache.ibatis.annotations.Param;
 import org.csu.drugcombserver.core.BaseController;
 import org.csu.drugcombserver.core.Msg;
+import org.csu.drugcombserver.entity.CellLine;
 import org.csu.drugcombserver.entity.DrugCombInfo;
 import org.csu.drugcombserver.entity.DrugCombinationInfo;
 import org.csu.drugcombserver.service.DrugCombService;
@@ -89,6 +90,16 @@ public class DrugCombController extends BaseController {
         DrugCombinationInfo drugCombinationInfo = service.getDrugCombination(Constant.INTEGRATION_TABLELIST[--tableIndex], pairIndex);
         if(drugCombinationInfo != null){
             return success(drugCombinationInfo);
+        }else{
+            return notFound();
+        }
+    }
+
+    @RequestMapping("/cellline/{cellName}")
+    public Msg getCellInfoByCellName(@PathVariable("cellName") @NotNull String name){
+        CellLine cellLine = service.getCellLineInfo(name);
+        if(cellLine != null){
+            return success(cellLine);
         }else{
             return notFound();
         }

@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-import org.csu.drugcombserver.VO.DrugKV;
+import org.csu.drugcombserver.entity.CellLine;
 import org.csu.drugcombserver.entity.DrugCombInfo;
 import org.csu.drugcombserver.entity.DrugCombinationInfo;
 
@@ -56,4 +56,8 @@ public interface DrugCombMapper {
             @Result(property = "mostSynergisticAreaScore", column = "Most.synergistic.area.score")
     })
     DrugCombinationInfo getDrugCombinationInfoByPairIndex(@Param("table") String tableName, @Param("pairIndex") int pairIndex);
+
+    @Select("SELECT * FROM cell_line WHERE cellName = #{name}")
+    CellLine getCellInfoByName(@Param("name") String name);
+
 }

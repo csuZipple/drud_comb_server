@@ -1,5 +1,6 @@
 package org.csu.drugcombserver.service;
 
+import org.csu.drugcombserver.entity.CellLine;
 import org.csu.drugcombserver.entity.DrugCombInfo;
 import org.csu.drugcombserver.entity.DrugCombinationInfo;
 import org.csu.drugcombserver.mapper.DrugCombMapper;
@@ -40,5 +41,9 @@ public class DrugCombService {
 
     public DrugCombinationInfo getDrugCombination(String tableName, int pairIndex){
         return drugCombMapper.getDrugCombinationInfoByPairIndex(tableName, pairIndex);
+    }
+
+    public CellLine getCellLineInfo(String name){
+        return drugCombMapper.getCellInfoByName(name);
     }
 }
