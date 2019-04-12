@@ -95,6 +95,21 @@ public class DrugCombController extends BaseController {
         }
     }
 
+    @RequestMapping("/origin/{tableIndex}/searchDrugCombinationPages")
+    public Msg drugCombinationSearchPages(@PathVariable("tableIndex")
+                                         @NotNull
+                                         @Max(value = 4,message = "Maximum is 4")
+                                         @Min(value = 1,message = "Minimum is 1") Integer tableIndex,
+                                         @Param("q")@NotNull(message = "search parameter q must not be null") String q,
+                                          @Param("page")
+                                              @NotNull(message = "Parameter page must not be null")
+                                              @Min(value = 1,message = "The minimum page is 1")Integer page,
+                                          @Param("size")
+                                              @NotNull(message = "Parameter size must not be null")
+                                              @Min(value = 2,message = "The minimum size is 2")Integer size){
+        return success(service.searchDrugMapPageByDrugName(Constant.INTEGRATION_TABLELIST[--tableIndex], q,page,size));
+    }
+
     @RequestMapping("/cellline/{cellName}")
     public Msg getCellInfoByCellName(@PathVariable("cellName") @NotNull String name){
         CellLine cellLine = service.getCellLineInfo(name);

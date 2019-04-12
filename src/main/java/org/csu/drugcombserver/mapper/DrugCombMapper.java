@@ -36,6 +36,20 @@ public interface DrugCombMapper {
     })
     List<DrugCombinationInfo> drugMapPage(@Param("table") String tableName,  @Param("page") int page, @Param("size") int size);
 
+
+    // 搜索drugname所在的所有药物对
+    @Select("SELECT * FROM ${table} WHERE CONCAT(Drug1,Drug2)  LIKE #{name} LIMIT #{page},#{size}")
+    @Results({
+            @Result(property = "drugCombination",  column = "Drug.combination"),
+            @Result(property = "synergyScore", column = "Synergy.score"),
+            @Result(property = "mostSynergisticAreaScore", column = "Most.synergistic.area.score")
+    })
+    List<DrugCombinationInfo> searchDrugMapByDrugName(@Param("table") String tableName, @Param("name")String name,  @Param("page") int page, @Param("size") int size);
+
+    @Select("SELECT COUNT(*) FROM ${table} WHERE CONCAT(Drug1,Drug2)  LIKE #{name}")
+    Integer getSearchMapsSize(@Param("table") String tableName, @Param("name")String name);
+
+
     /**
      * 获取特定药物对中的所有信息
      * @param tableName 表名

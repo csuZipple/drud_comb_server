@@ -35,6 +35,14 @@ public class DrugCombService {
         return res;
     }
 
+    public Map searchDrugMapPageByDrugName (String tableName,String drugName, int page, int size){
+        Map<String,Object> res = new HashMap<>();
+        drugName = "%" + drugName + "%";
+        res.put("page",drugCombMapper.searchDrugMapByDrugName(tableName, drugName,(page - 1) * size, size));
+        res.put("total",drugCombMapper.getSearchMapsSize(tableName,drugName));
+        return res;
+    }
+
     public List<DrugCombInfo> getDrugMapKV (String tableName, int blockId){
         return drugCombMapper.drugKV(tableName, blockId);
     }
