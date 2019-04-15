@@ -4,7 +4,6 @@ package org.csu.drugcombserver.entity;
  * 组合药物对靶细胞的拮抗信息
  */
 public class DrugCombInfo {
-//    private Integer id;
     private Integer blockId;
     private Integer row;
     private Integer col;
@@ -15,17 +14,10 @@ public class DrugCombInfo {
     private String concRowUnit;
     private String concColUnit;
     private Double response;
+    private String source;
 
     public DrugCombInfo() {
     }
-
-//    public Integer getId() {
-//        return id;
-//    }
-
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
 
     public Integer getBlockId() {
         return blockId;
@@ -105,5 +97,13 @@ public class DrugCombInfo {
 
     public void setResponse(Double response) {
         this.response = response;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }
