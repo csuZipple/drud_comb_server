@@ -32,7 +32,7 @@ public class DrugCombService {
 
 
     public Map<String, Object> fetchDrugIntegrationPages(Integer page, Integer size){
-        List<DrugIntegrationInfo> pages = drugCombMapper.getDrugIntegrationPages(page-1, size);
+        List<DrugIntegrationInfo> pages = drugCombMapper.getDrugIntegrationPages((page-1)*size, size);
         Integer total = drugCombMapper.getTableSize("integration");
         Map<String, Object> result = new HashMap<>();
         result.put("page", pages);
@@ -46,7 +46,7 @@ public class DrugCombService {
 
     public Map<String, Object> searchIntegrationPagesContainIndividualDrugPages(String drugName, Integer page, Integer size){
         String searchName = "%"+drugName+"%";
-        List<DrugIntegrationInfo> pages = drugCombMapper.searchIntegrationPagesContainIndividualDrugPages(searchName,page-1, size);
+        List<DrugIntegrationInfo> pages = drugCombMapper.searchIntegrationPagesContainIndividualDrugPages(searchName,(page-1)*size, size);
         Integer total = drugCombMapper.getSearchSize(searchName);
         Map<String, Object> result = new HashMap<>();
         result.put("page", pages);
