@@ -11,7 +11,7 @@ public class DrugIntegrationInfo {
     private String cellName;
     private Double synergyScore;
     private Double mostSynergisticAreaScore;
-    private String method;
+//    private String method;
 
 
     public String getDrugCombination() {
@@ -62,13 +62,13 @@ public class DrugIntegrationInfo {
         this.mostSynergisticAreaScore = mostSynergisticAreaScore;
     }
 
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
+//    public String getMethod() {
+//        return method;
+//    }
+//
+//    public void setMethod(String method) {
+//        this.method = method;
+//    }
 
     public Integer getId() {
         return id;

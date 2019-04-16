@@ -5,8 +5,8 @@ package org.csu.drugcombserver.entity;
  */
 public class DrugCombInfo {
     private Integer blockId;
-    private Integer row;
-    private Integer col;
+//    private Integer row;
+//    private Integer col;
     private String drugRowName;
     private String drugColName;
     private Double concRow;
@@ -27,21 +27,21 @@ public class DrugCombInfo {
         this.blockId = blockId;
     }
 
-    public Integer getRow() {
-        return row;
-    }
-
-    public void setRow(Integer row) {
-        this.row = row;
-    }
-
-    public Integer getCol() {
-        return col;
-    }
-
-    public void setCol(Integer col) {
-        this.col = col;
-    }
+//    public Integer getRow() {
+//        return row;
+//    }
+//
+//    public void setRow(Integer row) {
+//        this.row = row;
+//    }
+//
+//    public Integer getCol() {
+//        return col;
+//    }
+//
+//    public void setCol(Integer col) {
+//        this.col = col;
+//    }
 
     public String getDrugRowName() {
         return drugRowName;
