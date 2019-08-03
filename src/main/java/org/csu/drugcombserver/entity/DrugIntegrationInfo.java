@@ -10,8 +10,7 @@ public class DrugIntegrationInfo {
     private String drug2;
     private String cellName;
     private Double synergyScore;
-    private Double mostSynergisticAreaScore;
-//    private String method;
+    private String source;
 
 
     public String getDrugCombination() {
@@ -54,21 +53,6 @@ public class DrugIntegrationInfo {
         this.synergyScore = synergyScore;
     }
 
-    public Double getMostSynergisticAreaScore() {
-        return mostSynergisticAreaScore;
-    }
-
-    public void setMostSynergisticAreaScore(Double mostSynergisticAreaScore) {
-        this.mostSynergisticAreaScore = mostSynergisticAreaScore;
-    }
-
-//    public String getMethod() {
-//        return method;
-//    }
-//
-//    public void setMethod(String method) {
-//        this.method = method;
-//    }
 
     public Integer getId() {
         return id;
@@ -76,5 +60,26 @@ public class DrugIntegrationInfo {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    @Override
+    public String toString() {
+        return "DrugIntegrationInfo{" +
+                "id=" + id +
+                ", drugCombination='" + drugCombination + '\'' +
+                ", drug1='" + drug1 + '\'' +
+                ", drug2='" + drug2 + '\'' +
+                ", cellName='" + cellName + '\'' +
+                ", synergyScore=" + synergyScore +
+//                ", mostSynergisticAreaScore=" + mostSynergisticAreaScore +
+                '}';
     }
 }

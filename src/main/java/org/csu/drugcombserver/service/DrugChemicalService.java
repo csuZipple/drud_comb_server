@@ -1,6 +1,8 @@
 package org.csu.drugcombserver.service;
 
 import org.csu.drugcombserver.VO.DrugInfo;
+import org.csu.drugcombserver.VO.DrugInfoDescription;
+import org.csu.drugcombserver.VO.DrugInfoExtra;
 import org.csu.drugcombserver.mapper.DrugChemicalMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,13 @@ public class DrugChemicalService {
 
     public DrugInfo getDrugInfoById(String id){
         return mapper.getDrugInfoByDrugCIDs(id);
+    }
+
+    public DrugInfoExtra getDrugInfoExtraById(String id){
+        return mapper.getDrugInfoExtraByDrugCIDs(id);
+    }
+    public DrugInfoDescription getDrugInfoDescriptionById(String id){
+        return mapper.getDrugInfoDescriptionByDrugCIDs(id);
     }
 
     public DrugInfo getDrugInfoByDrugName(String name){

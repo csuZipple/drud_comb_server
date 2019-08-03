@@ -50,4 +50,22 @@ public class DrugIntegrationController extends BaseController {
                     Integer size){
         return success(service.searchIntegrationPagesContainIndividualDrugPages(keyword,page,size));
     }
+
+    @GetMapping("/search")
+    public Msg fetchDrugIntegrationByCombinationName(@Param("combination")
+                                                     @NotNull(message = "The parameter page is required!")
+                                                             String combination,
+                                                     @Param("page")
+                                                     @NotNull(message = "The parameter page is required!")
+                                                             Integer page,
+                                                     @Param("size")
+                                                         @NotNull(message = "The parameter size is required!")
+                                                                 Integer size){
+        return success(service.searchIntegrationByCombinationName(combination, page, size));
+    }
+
+    @GetMapping("/recommends")
+    public Msg fetchRecommendDrugIntegration(){
+        return success(service.fetchRecommendDrugIntegrationList());
+    }
 }

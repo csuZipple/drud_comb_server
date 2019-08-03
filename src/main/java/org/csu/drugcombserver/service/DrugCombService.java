@@ -6,12 +6,14 @@ import org.csu.drugcombserver.mapper.DrugCombMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Component
 public class DrugCombService {
+    private final static Integer RECOMMEND_LIST_SIZE = 2;
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private DrugCombMapper drugCombMapper;
@@ -52,6 +54,30 @@ public class DrugCombService {
         result.put("page", pages);
         result.put("total", total);
         return result;
+    }
+
+    public Map<String, Object> searchIntegrationByCombinationName(String combination, Integer page, Integer size){
+        List<DrugIntegrationInfo> pages = drugCombMapper.getIndividualDrugIntegrationByCombinationName(combination,(page-1)*size,size);
+        Integer total = drugCombMapper.getCombinationSearchSize(combination);
+        Map<String, Object> result = new HashMap<>();
+        result.put("page", pages);
+        result.put("total", total);
+        return result;
+    }
+
+    public List<String> fetchRecommendDrugIntegrationList(){
+        List<String>  list = new ArrayList<>();
+        int size = RECOMMEND_LIST_SIZE;
+        while(size --> 0){
+            int id = (int)(1+Math.random()*10000);
+            list.add(drugCombMapper.getIndividualDrugIntegration(id).getDrugCombination());
+        }
+        size = RECOMMEND_LIST_SIZE;
+        while(size --> 0){
+            int id = (int)(1+Math.random()*10000);
+            list.add(drugCombMapper.getIndividualDrugIntegration(id).getDrug1());
+        }
+        return list;
     }
 
 }

@@ -14,6 +14,7 @@ public class DrugCombInfo {
     private String concRowUnit;
     private String concColUnit;
     private Double response;
+    private Double blissScore;
     private String source;
 
     public DrugCombInfo() {
@@ -105,5 +106,13 @@ public class DrugCombInfo {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public Double getBlissScore() {
+        return blissScore;
+    }
+
+    public void setBlissScore(Double blissScore) {
+        this.blissScore = blissScore;
     }
 }

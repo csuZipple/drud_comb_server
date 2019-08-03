@@ -1,6 +1,8 @@
 package org.csu.drugcombserver.controller;
 
 import org.csu.drugcombserver.VO.DrugInfo;
+import org.csu.drugcombserver.VO.DrugInfoDescription;
+import org.csu.drugcombserver.VO.DrugInfoExtra;
 import org.csu.drugcombserver.core.BaseController;
 import org.csu.drugcombserver.core.Msg;
 import org.csu.drugcombserver.service.DrugChemicalService;
@@ -38,6 +40,16 @@ public class DrugChemicalController extends BaseController {
         if(drugInfo == null){
             return notFound();
         }
+        return success(drugInfo);
+    }
+    @RequestMapping("/extra/{CIDs}")
+    public Msg getIndividualDrugInfoExtraByDrugNames(@PathVariable("CIDs") @NotNull(message = "Parameter CIDs must not be null") String id){
+        DrugInfoExtra drugInfo = service.getDrugInfoExtraById(id);
+        return success(drugInfo);
+    }
+    @RequestMapping("/description/{CIDs}")
+    public Msg getIndividualDrugInfoDescriptionByDrugNames(@PathVariable("CIDs") @NotNull(message = "Parameter CIDs must not be null") String id){
+        DrugInfoDescription drugInfo = service.getDrugInfoDescriptionById(id);
         return success(drugInfo);
     }
 

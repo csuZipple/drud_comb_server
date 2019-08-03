@@ -12,7 +12,7 @@ public class Msg<T> {
 
     public Msg(T data) {
         this.code = Code.SUCCESS;
-        this.msg = "请求成功";
+        this.msg = "success";
         this.data = data;
     }
 

@@ -1,3 +1,6 @@
+/src/main/resources/source/combination_bliss.csv
+/src/main/resources/source/9606.protein.links.v11.0.txt
+/src/main/resources/source/9606.protein_chemical.links.detailed.v5.0.tsv
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
